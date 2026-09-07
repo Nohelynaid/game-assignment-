@@ -7,4 +7,4 @@ function computerPlay() {
 console.log(computerPlay());
 
 function playRound(playerSelection,computerSelection){if (playerSelection===computerSelection) return "Draw"} 
-if {(playerSelection==="rock") and (computerSelection === "paper") OR (computerSelection==="scissors") return "computer has won"}
+if {(playerSelection==="rock") && (computerSelection === "paper") || (computerSelection==="scissors"){ return "computer has won"}}
