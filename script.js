@@ -13,9 +13,10 @@ function playRound(playerSelection, computerSelection) {
   }
 
   if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
+    //(playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
-    (playerSelection === "scissors" && computerSelection === "paper")
+    (playerSelection === "scissors" && computerSelection === "paper") ||
+    (playerSelection === "scissors" && computerSelection === "rock")
   ) {
     return "Player has won";
   }
@@ -23,24 +24,24 @@ function playRound(playerSelection, computerSelection) {
   return "Computer has won";
 }
 
-
 function game() {
   let playerScore = 0;
   let computerScore = 0;
 
-  //declares two variables to keep track of the scores 
+  //declares two variables to keep track of the scores
 
   alert(
     "Welcome to Rock Paper Scissors!\n\n" +
-    "The first player to win 3 rounds wins the game.\n\n" +
-    "You will enter your choices using pop-up prompts.\n" +
-    "The computer will choose its move before you enter yours.\n" +
-    "Its choice will be locked and hidden until you make your selection.\n" +
-    "This means the computer cannot change its move after seeing your answer.\n " +
-    "Good luck!"
-  ); //displays instructions in a windows 
+      "The first player to win 3 rounds wins the game.\n\n" +
+      "You will enter your choices using pop-up prompts.\n" +
+      "The computer will choose its move before you enter yours.\n" +
+      "Its choice will be locked and hidden until you make your selection.\n" +
+      "This means the computer cannot change its move after seeing your answer.\n " +
+      "Good luck!",
+  ); //displays instructions in a windows
 
-  while (playerScore < 3 && computerScore < 3) { //keeps teh game while player and computer have less than 3 rounds 
+  while (playerScore < 3 && computerScore < 3) {
+    //keeps teh game while player and computer have less than 3 rounds
     let playerSelection = prompt(
       `Score: You ${playerScore} - ${computerScore} Computer
 
@@ -50,17 +51,17 @@ function game() {
     1 = Rock
     2 = Paper
     3 = Scissors
-    Or type Rock, Paper, or Scissors:`
+    Or type Rock, Paper, or Scissors:`,
+    ); // using prompt to get the player input
 
-    ); // using prompt to get the player input 
-
-    if (playerSelection === null) { // if player cancels the game 
+    if (playerSelection === null) {
+      // if player cancels the game
       alert("Game cancelled. Thanks for playing!");
       return;
     }
 
     playerSelection = playerSelection.trim().toLowerCase();
-    //trim() removes whitespace from both ends of a string 
+    //trim() removes whitespace from both ends of a string
 
     if (playerSelection === "1") {
       playerSelection = "rock";
@@ -75,11 +76,8 @@ function game() {
       playerSelection !== "scissors"
     ) {
       alert("Invalid choice. Please enter Rock, Paper, or Scissors.");
-      continue; //continue stops the play and starts new one 
+      continue; //continue stops the play and starts new one
     }
-
-
-
 
     //COMPUTERS PLAY
     const computerSelection = computerPlay(); //creates the computer choice with the computerPlay functin result
@@ -91,13 +89,7 @@ function game() {
     const computerDisplay =
       computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);
 
-    alert(
-      "Press OK or CLOSE to know the winner."
-    );
-
-
-
-
+    alert("Press OK or CLOSE to know the winner.");
 
     const result = playRound(playerSelection, computerSelection); //calls playRound function to get both player & computer choices
 
@@ -108,7 +100,7 @@ function game() {
 
     if (result === "Draw") {
       alert(
-        `It's a draw!\n\nYou chose ${playerDisplay}.\nComputer chose ${computerDisplay}.\n\nNo points awarded.`
+        `It's a draw!\n\nYou chose ${playerDisplay}.\nComputer chose ${computerDisplay}.\n\nNo points awarded.`,
       );
 
       console.log("Draw! No points awarded.");
@@ -116,7 +108,7 @@ function game() {
       playerScore++;
 
       alert(
-        `You win this round! \n\n${playerDisplay} beats ${computerDisplay}.\n\nScore: You ${playerScore} - ${computerScore} Computer`
+        `You win this round! \n\n${playerDisplay} beats ${computerDisplay}.\n\nScore: You ${playerScore} - ${computerScore} Computer`,
       );
 
       console.log("You won the round!");
@@ -124,7 +116,7 @@ function game() {
       computerScore++;
 
       alert(
-        `The computer wins this round! \n\n${computerDisplay} beats ${playerDisplay}.\n\nScore: You ${playerScore} - ${computerScore} Computer`
+        `The computer wins this round! \n\n${computerDisplay} beats ${playerDisplay}.\n\nScore: You ${playerScore} - ${computerScore} Computer`,
       );
 
       console.log("Computer won the round.");
@@ -133,13 +125,13 @@ function game() {
 
   if (playerScore === 3) {
     alert(
-      `You won the game!\n\nFinal score:\nYou ${playerScore} - ${computerScore} Computer`
+      `You won the game!\n\nFinal score:\nYou ${playerScore} - ${computerScore} Computer`,
     );
 
     console.log("You are the champion!");
   } else {
     alert(
-      `The computer won the game!\n\nFinal score:\nYou ${playerScore} - ${computerScore} Computer`
+      `The computer won the game!\n\nFinal score:\nYou ${playerScore} - ${computerScore} Computer`,
     );
 
     console.log("The computer is the champion!");
