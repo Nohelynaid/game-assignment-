@@ -1,5 +1,3 @@
-alert("JavaScript works!");
-
 function computerPlay() {
   const options = ["rock", "paper", "scissors"];
   const number = Math.floor(Math.random() * 3);
